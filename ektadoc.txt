@@ -1,0 +1,787 @@
+
+https://forum.cs-cart.com/topic/59395-how-to-set-up-custom-email-notification-and-event-after-form-submission/
+1.VPN-connect:- 
+
+	netExtender -uektab.patel -pRadixweb8 -dradixweb.local 180.211.112.179:4433
+	
+	netExtender -uektab.patel -pRadixweb@8 -dradixweb.local 180.211.112.179:4433
+
+2.
+	http://welcome.radixoffice.com/
+
+3.
+	http://demo.ektab.patel.radixusers1.com/
+
+4.	http://radixusers1.com/phpmyadmin/
+	ektab_patel
+	ektab.patel.radixusers1.com
+	
+deep70
+
+5. to install silverstripe:
+
+	1.Go to terminal login with your user:
+		---	ssh ektab.patel@radixusers1.com
+		---     make one folder under your zend folder with name silverstripe
+		---     then run cmd
+				---	composer create-project silverstripe/installer public_html 3.2.1
+		--- 	open filezilla
+			---	Add hostname:
+					sftp://radixusers1.com
+			---	Add username:
+					ektab.aptel
+			---	Add PAssword:
+					Radixweb8
+			---	Add Port:
+					22
+		---	Now click on Quick Connect
+			
+		---	After that check folder is showing or there should not nay error, folder should be created successfully.
+
+		---	Now open chrome with url :http://silverstripe.ektab.patel.radixusers1.com
+		
+		--- 	Check errors
+			
+				----	Add one line in .htaccess after</IfModule> ---- php_value date.timezone America/Los_Angeles
+				
+				---	now click recheck-requirement  on after requirement (Timezone error must be gone from there)
+				
+				---	Now set the username and password
+			
+				---	Add databasecredentials there.
+				
+				---	Now cleck on install.
+			
+				For admin:	username: admin
+						password: ekta@123
+				url 		http://silverstripe.ektab.patel.radixusers1.com/admin/
+			
+				For user	http://silverstripe.ektab.patel.radixusers1.com/
+					
+		Note:-(Add the ss.envirnoment file to public_html and change the database credentials in it)
+
+6. FTP of Surbhi
+
+	
+	FTP for this website.
+	host : radixusers1.com
+	username : surbhi.shanishchara
+	password : Radixweb04
+	port : 22
+
+
+	
+	Ekta, here is a URL for you.
+	Front end: http://clifton.surbhi.shanishchara.radixusers1.com/project/public/
+	Admin panel: http://clifton.surbhi.shanishchara.radixusers1.com/project/public/admin
+	Username: admin
+	Pwd: password
+
+MS-Team:-
+7.UserId:  ektab.patel@rxteam376.onmicrosoft.com	
+  Password:bhagyesh@123
+
+
+http://p_cliftonhotels.surbhi.shanishchara.radixusers1.com/project/public/
+
+
+https://jsbeginners.com/javascript-budget-app/
+
+
+8. page.ss getDeluxeTemplateContant
+
+Mira
+
+9. Skype:
+phpdev42.radixweb@hotmail.com
+or
+phpdev43.radixweb@hotmail.com
+live:.cid.2af7a141a3927573
+
+
+10. https://www.myip.com/api-docs/
+10.
+node skeleton build js-dist
+
+
+1.https://projects.radixweb.in/issues/148175
+
+1.There are 2 changes in _ss_environmnet
+	1.define("IAI_SEND_STRIPE_DATA", "http://iaisubscriptions.dev.radixweb.net/www/project/public/purchase-from-htlgi/");
+		--This url to send request to the iaisubscription for checkout the festival ticket with iai subscription.
+	2.define("IAI_BASE_URL", " http://iaisubscriptions.dev.radixweb.net/www/project/public/");
+		-- This change for to set the forgot password link in htlgi will checkout proccess for ticket purchasing
+
+
+1./public_html/project/public/htlgiecommerce/code/products/Product.php
+2.public_html/project/public/mysite/code/extensions/SiteConfigDecorator.php
+3./public_html/project/public/htlgiecommerce/code/forms/OrderForm.php
+4./public_html/project/public/htlgiecommerce/code/forms/OrderFormFields.php
+5./public_html/project/public/accesstoken-api/code/controllers/HtlgiFestivalTicketTokenController.php
+6./public_html/project/public/accesstoken-api/code/model/HTLGIFestivalTicketTokenIAI.php
+7./public_html/project/src/themes/default/js/main.js
+8.Orderform.ss
+
+
+https://ektabpatel.wixsite.com/shopping
+/dancing
+https://www.wix.com/velo/reference/wix-users-backend/register
+https://editor.wix.com/html/editor/web/renderer/edit/3900fd7c-7b70-4d9a-9394-775d1e7f8809?metaSiteId=5500025f-6d71-4142-a5d7-9cf39a5809b2&editorSessionId=3EBD3A1E-E6B6-4E66-871D-011E70533106&autoDevMode=true
+ekta@radix.com
+Radixweb8
+
+
+
+
+
+TVF SVN Access
+------------------
+Username: radix_kartavya
+Password: PeCiM1U05Hg=
+
+
+--------------------------MIS attendance
+http://192.168.100.109/Login
+
+svn co https://scms.onlinecc.co.uk/scms/IAI/htlgi_new/htlgi_combined/trunk .
+
+
+
+--------------------------------My server for htlgi----------
+
+http://ektap.radixdev54.com/project/public/global/online-festival
+Deatils:-
+Username:-ektab.patel
+Password:-password123
+
+sftp://ektap.radixdev54.com/home/ektap
+
+ektap.radixdev54.com / Rx@EktaP#2020
+
+svn co https://scms.onlinecc.co.uk/scms/IAI/htlgi_new/htlgi_combined/trunk
+
+
+Hi guys, going forward we can use this link below for our standups
+Topic: CHG revamp daily standup
+Time: 10:30am
+https://us02web.zoom.us/j/86270176399?pwd=L1ZFYlRFTzE3TEhBMWVxVi9xRWtaUT09
+Meeting ID: 862 7017 6399
+Passcode: chg1!@#
+
+
+
+Join Zoom Meeting https://us02web.zoom.us/j/86270176399?pwd=ellyVjJ5ZDRweXVYaGVxK0dER2Z6QT09 Meeting ID: 862 7017 6399 Passcode: 124312
+
+
+
+1915:-
+/run/user/1003/gvfs/sftp:host=radixdev56.com/home/iaisubscriptions/public_html/website/public/themes/iaitv/templates/Includes/Footer.ss
+/run/user/1003/gvfs/sftp:host=radixdev56.com/home/iaisubscriptions/public_html/website/public/iaiwidgets/public/js/widgets/FooterWidget/tmpl.ntt
+/run/user/1003/gvfs/sftp:host=radixdev56.com/home/iaisubscriptions/public_html/website/public/iaiwidgetscore/code/controllers/FooterWidgetController.php
+/run/user/1003/gvfs/sftp:host=radixdev56.com/home/iaisubscriptions/public_html/website/public/mysite/code/pages/Page.php
+tmpl.js file is ramining
+
+1916:-
+/run/user/1003/gvfs/sftp:host=radixdev56.com/home/iaisubscriptions/public_html/website/public/iaiwidgets/src/IaiWidgetPage.ss
+
+remote: 
+remote: To create a merge request for 0001916, visit:
+remote:   https://gitlab.com/tvf_projects/iai/iai.tv/website/-/merge_requests/new?merge_request%5Bsource_branch%5D=0001916
+remote: 
+To https://gitlab.com/tvf_projects/iai/iai.tv/website.git
+ * [new branch]      0001916 -> 0001916
+
+
+
+------grep----------------
+grep -inr "id=\"tabs"" *
+zip -r upload.zip Uploads
+
+
+
+
+------------------urvesh-git--credentails----------
+https://gitlab.com/tvf_projects/comms/comms-website
+ 
+u: urvesh.barot
+p: Urvesh@gitlab.1
+
+for comms:-
+public_html/src ma jai ne pela npm i karjo pachi npm run dev karjo 
+
+
+
+---------make a new branch from other branch
+
+https://renatello.com/create-branch-from-another-branch-in-git/
+example:- git branch branchname
+git branch 2
+
+then
+
+git checkout -b newbranchname
+
+To https://gitlab.com/tvf_projects/iai/htlgi/website.git
+   6d521c5..f61889e  htlgi_may_festival_ekta -> htlgi_may_festival_ekta
+
+
+onClick={this.toggleHidden}
+this.state.isHidden
+
+=LEFT(AB4,FIND(",",AB4)-1)AB2
+
+------iaitv-----------
+user: kartavya.desai@radixweb.com
+pass: e05a95cbc3c3
+
+
+--------------------comms(check points)
+1./run/user/1003/gvfs/sftp:host=radixusers2.com,user=ektab.patel/home/GALAXYRADIXWEB/ektab.patel/web/comms/public_html/src/src/widgets/WidgetBannerSlider/index.js
+(check line 60,61)
+
+
+
+1.Advanced addon
+2.Advanced products import
+
+
+
+------------store.wesave-----------
+order status addon 
+recurring script
+
+
+----------------- Wesave git lab --------------
+GitHub ID - radixdt.2035@gmail.com Password - 1@f(m63fCsxcds{Bd OR [15:39] radixdt2035@123
+Token - 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
+
+https://hotexamples.com/examples/tygh/Session/-/php-session-class-examples.html
+
+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
+./admin.php?cc&ctpl
+
+Avatax:-
+Admin123!
+rjstewart@wesave.com
+
+
+Sandbox avatax
+ektab.patel@radixweb.com
+Radixweb@123
+
+2006019704
+8718DDBD3A124DE8
+
+
+-----suman sir ---
+git reset b181a037
+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
+
+
+
+
+https://stackoverflow.com/questions/68105010/make-a-change-to-the-database-with-prisma-js-without-having-to-reset-the-whole-t
+
+
+Right now we have run 3 cron jobs.
+Get Orders from CS-Cart. This cron run every min.
+Get Product from q6 and Replink api and store in ICH database. This cron run every day only one time.
+Product sync to CS-Cart. This cron run every hours. This cron sync Q6 and replink product on CS-Cart
+
+php artisian list
+php artisian cronname
+
+
+
+ API key AIzaSyAltUJFUdSS21JkUwkLwC-Co6_ZoKIZ01A
+ 
+743596856602-ktr9itsj4mgk430b4ib3mtdaraokleip.apps.googleusercontent.com
+Your Client ID
+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
+Your Client Secret
+
+---------wesave production---------
+$config['db_host'] = 'csc-fe-prod-mysqldbserver.mysql.database.azure.com';
+$config['db_name'] = 'mysqldatabase38914';
+$config['db_user'] = 'radixdbuser@csc-fe-prod-mysqldbserver';
+$config['db_password'] = 'jfC84RCEy/u<m&$a!';
+
+$config['database_backend'] = 'mysqli';
+	
+'template_code' => 'new_notification',
+----------wesave staging------
+$config['db_host'] = 'csc-fe-staging-mysqldbserver.mysql.database.azure.com';
+$config['db_name'] = 'wesave_staging_csc';
+$config['db_user'] = 'radixdbuser@csc-fe-staging-mysqldbserver';
+$config['db_password'] = 'jfC84RCEy/u<m&$a!';
+---------ich production-----------
+* Production ICH
+*******************************************************************************************************************************************************************************************
+::::::::: FTP Details :::::::::
+Host: waws-prod-dm1-155.ftp.azurewebsites.windows.net
+User: wesave-prod-apiservice\cscradix
+Password: xZxhA9hryxv5P3F!
+Site Url : https://wesave-prod-apiservice.azurewebsites.net/member
+*******************************************************************************************************************************************************************************************
+::::::::: ICH Database Production Details :::::::::
+host: wesave-prod-apiservice-mysqldbserver.mysql.database.azure.com
+user: wsxdragon@wesave-prod-apiservice-mysqldbserver
+password: 5VNHXA9#E/83g`kh
+database: mysqldatabase8133
+*************************************************************************************************************************************************************************************
+::::::::: ICH Staging ::::::::: 
+*************************************************************************************************************************************************************************************
+::::: FTP Details :::::
+Host: waws-prod-mwh-051.ftp.azurewebsites.windows.net
+User: wesave-staging-apiservice\cscradix
+pwd: xZxhA9hryxv5P3F!
+
+* ICH Staging Database Credential
+HOST=wesave-staging-apiservice-mysqldb-server.mysql.database.azure.com
+DATABASE=mysqldatabase57950
+USERNAME=radixdbuser@wesave-staging-apiservice-mysqldb-server
+PASSWORD=jfC84RCEy/u<m&$a!
+
+::::: Indi Order Download CSV Link :::::
+https://customcommissionstorage.blob.core.windows.net/ich/2021-10-11.csv?sp=rl&st=2021-10-08T15:09:15Z&se=2024-02-02T00:09:15Z&spr=https&sv=2020-08-04&sr=c&sig=Jf7FS9fuWUM7yZk%2FK7UVQFCqRda%2Bu6SHxn%2ByKbCfFeE%3D
+*******************************************************************************************************************************************************************************************
+::::: CS-CART FTP Details :::::
+Host: waws-prod-dm1-179.ftp.azurewebsites.windows.net
+Username: csc-prod-fe\cscradix
+Password: xZxhA9hryxv5P3F!
+Site URL: https://wesave.com
+*************************************************************************************************************************************************************************************
+::::: CS-CART production db details ::::::
+Host: csc-fe-prod-mysqldbserver.mysql.database.azure.com
+DbName: mysqldatabase38914
+DbUser: radixdbuser@csc-fe-prod-mysqldbserver
+DbPassword: jfC84RCEy/u<m&$a!
+mysqldump -h csc-fe-prod-mysqldbserver.mysql.database.azure.com -p -u radixdbuser@csc-fe-prod-mysqldbserver mysqldatabase38914 cscart_product_prices --hex-blob --no-tablespaces > cscart_product_prices.sql
+*******************************************************************************************************************************************************************************************
+******************************************************************************************************************************************************************************************
+:::: Store.wesave.com server details :::::
+host : 209.151.146.72
+username: radixwebteam
+pwd: Fuh#~a4^n9QZ:[KU
+- Login ssh command : ssh radixwebteam@209.151.146.72
+Database Access 
+Host: localhost
+User: cscdbuserr
+Password: V7.Q:s9e4f-:gTF^
+Database: staging2
+
+
+ ::: Database credential:::::
+ Username : cscdbuserr
+ db_pass : V7.Q:s9e4f-:gTF^
+ db_name: cscdb122920
+ db_host: localhost
+ staging
+ mysql -u cscdbuserr -p
+ mysql -u cscdbuserr -p wesave < backup_4.14.1.SP1_31Aug2022_034703.sql
+ --------- ----- ------------------------------------------------------------------
+ 
+ SPO Credentails
+SFTP
+host: sftp.sspo.com
+username: wesave
+password: KCCFr!CO!@pZ(SF!Tr-58X!dB]<edvcf%
+
+API docs: https://documenter.getpostman.com/view/15306792/U16ooP2t 
+
+API key: 961744d50016482e8d0309e9dc3ec032 
+////////////*******************************************************///////////////
+https://store2.wesave.com/phpmyadmin/
+Username store2db 
+Password 32e9c8fb9eb3 
+
+store2_wesave_com
+zllSTCK6HkBLoyPzGU24
+-----------------------------------
+ASAPLabs SSH
+store2wesave@157.245.2.163
+xh1UIvoEvBiO5lp3
+
+
+/*********************************************************/
+staging2 DB access
+
+https://staging2.wesave.com/phpmyadmin-f68f57c5d649e8075b65
+host :138.68.9.16
+user: staging2_wesave_com
+password: 3IZS4mrQKcgLPwHSDlpZ
+
+
+Access for server staging2.wesave.com has been created.
+•	Connection IP is 138.68.9.16, port 22 
+•	Username staging2wesave 
+•	Password TgT0EV9wP7uYNmOw 
+sftp://staging2wesave@138.68.9.16
+/*******************************************************/
+
+https://wesave.com/phpmyadmin-a0ee25f9eb05c9db1eed
+db_name = wesave_com
+db_user 'wesave_com';
+db_password = zllSTCK6HkBLoyPzGU24
+
+
+/**********************************************************/
+ASAPLabs SSH
+store2wesave@157.245.2.163
+xh1UIvoEvBiO5lp3
+
+
+https://store2.wesave.com/phpmyadmin/
+store2_wesave_com
+zllSTCK6HkBLoyPzGU24
+
+sftp://store2wesave@157.245.2.163
+/******************************************************************/
+
+https://portal.azure.com/
+Email: devops@wesave.com
+Password : Tap42289
+
+
+/************* New Ich Production Details ************************/
+SH Access to ICH production server 
+
+ssh ichplatform@149.28.85.188
+NJyt9RF58T4jpxnQ
+cd projects/ichplatform.com/public_html/    
+
+https://ichplatform.com/
+
+/***************************************************************/
+
+http://wesave.dev.radixweb.net/index.php?dispatch=auth.logout&redirect_url=index.php
+
+
+
+Simtech
+
+info@wesave.com
+
+password: Admin123!
+
+
+https://console.cloud.google.com/apis/credentials?highlightClient=8494756147-8v18ng98martbdv7lr4gr9s8qljkc4us.apps.googleusercontent.com&authuser=1&project=mallwesave
+
+8494756147-8v18ng98martbdv7lr4gr9s8qljkc4us.apps.googleusercontent.com
+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
+
+
+
+https://support.google.com/analytics/answer/9283607#zippy=%2Cin-this-article
+https://support.google.com/analytics/answer/10976610?hl=en&ref_topic=9303474
+https://support.google.com/analytics/answer/9445345#zippy=%2Cin-this-article
+https://support.google.com/analytics/answer/9213390?hl=en&ref_topic=9303474
+https://developers.google.com/analytics/devguides/collection/ga4/user-id?technology=gtagjs
+
+
+850362
+116074
+
+smtp.gmail.com
+iamektapatel58@gmail.com
+yzamkyhkvptiggbu/wqqmqavxkbtznzzd
+
+
+
+mail.authsmtp.com
+ac77258
+disk_flank_pb_forth
+TLS
+
+
+
+
+
+
+/*********************************************************/
+ runsched.cmd
+php %HOME%\site\wwwroot\artisan orders:day
+settings.job
+{
+  "schedule": "0 */2 * * * *",
+  "is_in_place": true
+}
+
+
+https://react-tutorial.app/app.html?id=328
+
+
+/**********Change port issue*************/
+app/lib/vendor/phpmailer/phpmailer/src/PHPMailer.php port 25 to 587
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function getUserWithTable($userId)
+    {
+        // Show members in tables api
+
+        $userDetail = $this->getUsers($userId);
+        $memberEmail = $userDetail['email'];
+        $member = Member::where('email', $memberEmail)->first();
+        $getMembers = DB::select(DB::raw("select * from members,(select @pv := $member->id) initialisation where find_in_set(createdBy, @pv) and length(@pv := concat(@pv, ',', id)) order by createdBy, id "));
+        //dd($getMembers);
+        $userFullData = array();
+        $count = 0;
+        $ids =  array_column($getMembers, 'id');
+        $users = DB::table('members')->whereIn('id', $ids)->get();
+        // dd($users);
+        $previousValue = '';
+        foreach ($getMembers as $key => $getMember) {
+
+            // $cscUser = $this->getUsersWithEmail($getMember->email);
+            //  $referralEmail = Member::where('id', $getMember->createdBy)->first();
+
+            if ($users[$key]->createdBy == $member->id) {
+                $referralEmail = $memberEmail;
+                //  $cscReferral = $member->id;
+            } elseif ($previousValue && $previousValue->createdBy ==  $getMember->createdBy) {
+                $referralEmail = $previousValue->email;
+                //  $cscReferral = $previousValue->id;
+            }
+            // $referralEmail = $users[$key]->createdBy;
+
+            $cscReferral = $this->getUsersWithEmail($referralEmail);
+
+            //  $totalTransaction = TransactionSecurePoint::where('transactionBy', $getMember->id)->sum('totalTransaction');
+            $totalTransactionSum = TransactionSecurePoint::where('transactionBy', $getMember->id)->select(DB::raw('SUM(totalTransaction) AS totalTransaction  ,SUM(points) AS points'))->first()->toArray();
+            // $totalPoints = TransactionSecurePoint::where('transactionBy', $getMember->id)->sum('points');
+            if (!empty($totalTransaction) && !empty($totalPoints)) {
+                $userFullData[$count]['id'] = $getMember->id;
+                $userFullData[$count]['firstName'] = $getMember->firstName;
+                $userFullData[$count]['lastName'] = $getMember->lastName;
+                $userFullData[$count]['created_at'] = $getMember->created_at;
+                $userFullData[$count]['createdBy'] = $cscReferral['users'][0]['user_id'];
+                $userFullData[$count]['totalTransaction'] = $totalTransactionSum['totalTransaction'];
+                $userFullData[$count]['totalPoints'] = $totalTransactionSum['points'];
+                $userFullData[$count]['csc_id'] = !empty($getMember->csc_id) ? $getMember->csc_id : "";
+                $count++;
+            }
+            $previousValue = $getMember;
+        }
+        return $userFullData;
+    }
+
+
+
+
+
+
+
+$('.registration-form-left input[name="user_data[lastname]"]').keyup(function(e){
+var regex = new RegExp("^[a-zA-Z]+$");
+var str = $(this).val();
+var msg = $('#elm_7_error_message p' ).text();
+if (!regex.test(str) && str != "") {
+$(this).parent().closest('div').addClass('error');
+var label = $(this).siblings('label');
+$(label).addClass('cm-failed-label');
+$(this).addClass('cm-failed-field');
+if($(this).next().length == 0 || msg == "The Last name field is mandatory."){
+	$("<span id='elm_7_error_message' class='help-inline'><p>The <b>Last name</b> should not contain number.</p></span>").insertAfter('input[name="user_data[lastname]"]');
+}
+e.preventDefault();
+	  $(':input[type="submit"]').prop('disabled', true);
+}else{
+	$(this).parent().closest('div').removeClass('error');
+	var label = $(this).siblings('label');
+	$(label).removeClass('cm-failed-label');
+	$(this).removeClass('cm-failed-field');
+$(':input[type="submit"]').prop('disabled', false);
+}
+});
+
+
+===============================================================================================
+
+SSH Access to ICH production server 
+
+ssh ichplatform@149.28.85.188
+NJyt9RF58T4jpxnQ
+cd projects/ichplatform.com/public_html/     
+
+
+149.28.85.188, port 22 
+Username ichplatform
+Password NJyt9RF58T4jpxnQ
+
+DATABASE
+
+Adminer: https://ichplatform.com/adminer-7580888bf397ac167596
+phpMyAdmin: https://ichplatform.com/phpmyadmin-7580888bf397ac167596
+ichplatform_com
+obL4HeSjpBj8Q2x6zm9k
+
+===============================================================================================
+
+Access for server staging.ichplatform.com has been reset.
+
+ssh ichstaging@104.238.152.100
+5Mvh3DXt22jRLTNn
+cd projects/staging.ichplatform.com/public_html/
+
+
+Connection IP is 104.238.152.100, port 22
+Username: ichstaging
+Password: 5Mvh3DXt22jRLTNn
+
+DATABASE
+
+Adminer: https://staging.ichplatform.com/adminer-b30ea037ac95a3197485
+phpMyAdmin: https://staging.ichplatform.com/phpmyadmin-b30ea037ac95a3197485
+
+================================================================================================
+
+Access for server dev.wesaverewards.com has been created.
+
+Connection IP is 5.161.197.129, port 22
+Username dev_wesave
+Password 	UplsnBTysS95qDEn
+
+Access granted until 2023-02-21
+sftp://dev_wesave@5.161.197.129
+sftp://dev_wesave@5.161.197.129/home/dev_wesave/projects/dev.wesaverewards.com/public_html/
+
+Here are the dev instance credentails
+
+dev.wesave.com
+
+Connection IP is 159.69.152.99, port 22
+Username dev_wesave
+Password RqeEPwIusEDmMVcn
+
+Adminer: https://dev.wesaverewards.com/adminer-662f5624363d6cee7d36
+phpMyAdmin: https://dev.wesaverewards.com/phpmyadmin-662f5624363d6cee7d36
+
+
+Login - Adminer
+https://dev.wesaverewards.com
+
+phpMyAdmin
+https://dev.wesaverewards.com
+
+U: dev_wesaverewards_com
+P: xlAwnUsSndNtJZvfBkIl
+
+The phpmyadmin login credentials are stored in the /srv/projects/dev.wesave.com
+/.mysql.yml file on the server. 
+
+ssh dev.wesave.com@5.161.197.129
+=================================================================================================
+
+/**********************************************************************************/
+
+https://my.scalesta.com/
+info@emsysindia.com
+Wesave@123
+https://server.scalesta.com/ichplatform.com/settings/scheduler
+/***********************************************************************************/
+
+Harshta@2007
+
+
+/**********************GitHub************************/
+ekta@02071994
+iamektapatel58@gmail.com
+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
+/****************MyNotes *********************/
+https://codedec.com/tutorials/how-to-encrypt-and-decrypt-password-in-nodejs/
+https://github.com/bezkoder/react-js-login-registration-hooks/blob/master/src/components/Register.js
+https://adminlte.io/blog/free-react-templates/
+
+1. Take mongodb export 
+2. Take timezone csv file (documents/timelist.csv)
+3. Git push node react
+4.
+
+dhavalb.dave@radixweb.com
+Radixweb@8
+Radixweb@7
+
+https://stackoverflow.com/questions/75459205/reactjs-remember-me-component-to-hooks
+
+1) What is your primary reason for leaving?
+
+The main reason to leave the company is ARI policy.I disagree with an organisation using performance payback as well.Without a question, I support such concept, but I disagree with the idea of taking back performance money because the employee gave their all to earn higher performance pay. Employees work for pay, thus the organization taking that money back is not a smart idea. Additionally, I have worked for this company for three years, but I have only ever worked with CMS, which is bad for my future.
+
+
+2) Did anything trigger your decision to leave?
+
+No
+	
+3) What was most satisfying about your job?
+The most satisfying thing about my job is that all my reporting heads, HODs, and project managers are well-managed and understandable; they are also supportive in each situation, whether technical or personal. I can freely share my ideas with them. Also, I have good teammates too.
+
+
+
+
+4) What was least satisfying about your job?
+I didn't get a chance to learn any JS or good frameworks that would help me make my future bright.
+
+5) Did your job duties turn out to be as you expected?
+In some of the cases yes.
+In some of the cases no.
+
+
+6) Did you receive adequate support to do your job?
+I have received proper support from the team and senior management in the work that I have done on the project, but I never get the chance to work on the technology that I want, so I am not satisfied with that because I have given 3 years to the company, but still, the organisation hasn't given me a chance to work on the technology that I want.
+
+7) Did this company help you to fulfill your career goals?
+No
+
+8) What would you improve to make our workplace better?
+No answer 
+
+9) Did any company policies or procedures (or any other obstacles) make your job more difficult?
+Yes ARI policy.
+
+
+10) Would you consider working again for this company in the future?
+May be
+
+11) Would you recommend working for this company to your family and friends?
+Yes sure if they get chance to learn.
+
+
+12) What did you like most about this company?
+
+I like the structure of the company mostly provides all the facilities that needed by the employee. Hospitality is also good as well as I also like the laptop that I have with me it is very smooth and good in use I like it. 
+
+13) What did you like least about this company?
+
+ARI policy and performance pay policy. I didn't get a chance to work on a good framework or in any js.
+
+14) What does your new company offer that this company doesnt?
+
+Still I didn't join any organization.
+
+15) Can this company do anything to encourage you to stay?
+No
+
+16) Did anyone in this company discriminate against you, harass you or cause hostile working conditions?
+
+No
+
+17) Any other comments
+No
+
+
