@@ -1,0 +1,42 @@
+.register{
+    background:  url("../../assets/img/background.jpeg");
+    background-color: #212529;
+    min-height: 100%;
+    position: absolute;
+}
+.register .card-body{
+    background-color: #E2E8F0;
+}
+.rounded-lg {
+    border-radius: 0.7rem;
+}
+.error{
+    font-size: 0.84rem;
+    color: #fb404b;
+    margin-bottom: 0;
+    margin-left: 0.25rem;
+}
+
+.btn-black {
+    /* background-color: #171a1d !important; */
+    border-color: #171a1d !important;
+    color: #171a1d !important;
+  }
+  
+  .btn-black:hover {
+    background-color: #1e2226 !important;
+    border-color: #1e2226 !important;
+  }
+  .list-company .card:hover{
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+.removeicon-border {
+    border: none !important;
+    font-size: 15px !important; 
+  }
+  .required-field::after {
+    content: "*";
+    color: red;
+    margin-left: 2px;
+}
