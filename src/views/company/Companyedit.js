@@ -19,60 +19,85 @@ import {
   Col,
 } from "react-bootstrap";
 
-export default function Companyadd() {
+export default function Companyedit() {
+  const storedDataString = localStorage.getItem("companyData");
+  const storedData = JSON.parse(storedDataString);
+  console.log("storedData----", storedData);
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [timezone, setTimezone] = useState(null);
-  const [companyName, setCompanyName] = useState();
-  const [userName, setUserName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [sipprofile, setSipProfile] = useState();
-  const [role, setRole] = useState();
-  const [trunk, setTrunk] = useState();
-  const [channel, setChannel] = useState();
-  const [domain, setDomain] = useState();
-  const [address, setAddress] = useState();
-  const [city, setCity] = useState();
-  const [phone, setPhoneNumber] = useState();
-  const [state, setState] = useState();
-  const [pincode, setPinCode] = useState();
-  const [country, setCountry] = useState();
-  const [status,setStatus] = useState("");
-  const [responseErrors, setResponseErrors] = useState();
-  const [timezones, setTimezoneList] = useState();
-  const [countrylist, setCountryList] = useState();
+  const [companyName, setCompanyName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [sipprofile, setSipProfile] = useState("");
+  const [role, setRole] = useState("");
+  const [trunk, setTrunk] = useState("");
+  const [channel, setChannel] = useState("");
+  const [domain, setDomain] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [phone, setPhoneNumber] = useState("");
+  const [state, setState] = useState("");
+  const [pincode, setPinCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [status, setStatus] = useState("");
+  const [responseErrors, setResponseErrors] = useState("");
+  const [timezones, setTimezoneList] = useState("");
+  const [countrylist, setCountryList] = useState("");
+   let defaultCountryOption = null;
+   let defaultTimezoneOption = null;
+  if (countrylist) {
+    countrylist.forEach((clist) => {
+      if (clist.id == storedData.country) {
+        defaultCountryOption = { label: clist.nicename, value: clist.id };
+      }
+    });
+  }
+  if (timezones) {
+    timezones.forEach((tlist) => {
+      if (tlist.gmtOffset == storedData.timezone) {
+        defaultTimezoneOption = {
+          label: tlist.timeZone + "(" + tlist.gmtOffset + ")",
+          value: tlist.gmtOffset
+        };
+      }
+    });
+  }
+  console.log("defaultTimezoneOption", defaultTimezoneOption);
 
+ 
   const onSubmit = async (data) => {
-    console.log("status ----",status);
+  console.log("555555",data);
+  console.log("9990",address);
     axios
-      .post("/add", {
+      .put(`/editcompany/${storedData.companyId}`, {
         firstName: data.firstName ? data.firstName : "",
         lastName: data.lastName ? data.lastName : "",
         userName: data.userName ? data.userName : "",
         email: data.email ? data.email : "",
         password: data.password ? data.password : "",
         companyName: data.companyName ? data.companyName : "",
-        timezone: data.timezone.value ? data.timezone.value : "",
+       // timezone: data.timezone.value ? data.timezone.value : storedData.timezone,
+        timezone:"UTF-07:00",
         sipprofile: data.sipprofile ? data.sipprofile : "",
         role: data.role ? data.role : "",
         trunk: data.trunk ? data.trunk : "",
         channel: data.channel ? data.channel : "",
         domain: data.domain ? data.domain : "",
-        country: country ? country : "",
-        address: address ? address : "",
-        city: city ? city : "",
-        contactNumber: phone ? phone : "",
-        state: state ? state : "",
-        pincode: pincode ? pincode : "",
-        status: status?status: 0,
-        userType: 0,
+        country: country ? country : storedData.country,
+        address: address ? address : storedData.address,
+        city: city ? city : storedData.city,
+        contactNumber: phone ? phone : storedData.phone,
+        state: state ? state :storedData.state,
+        pincode: pincode ? pincode : storedData.pincode,
+        status: status ? status : storedData.status,
       })
       .then(
         (response) => {
@@ -120,6 +145,7 @@ export default function Companyadd() {
                           First Name
                         </label>
                         <Form.Control
+                          defaultValue={firstName || storedData.firstName}
                           name="firstName"
                           placeholder="First Name"
                           type="text"
@@ -129,7 +155,6 @@ export default function Companyadd() {
                             minLength: 3,
                           })}
                         ></Form.Control>
-                        {console.log("erros", errors)}
                         {errors.firstName &&
                           errors.firstName.type === "required" && (
                             <p className="error">This field is required</p>
@@ -156,7 +181,8 @@ export default function Companyadd() {
                           Last Name
                         </label>
                         <Form.Control
-                        name="lastName"
+                          defaultValue={storedData.lastName}
+                          name="lastName"
                           placeholder="Last Name"
                           type="text"
                           onChange={(e) => setLastName(e.target.value)}
@@ -175,23 +201,33 @@ export default function Companyadd() {
                               Please enter name greater than 3 letter
                             </p>
                           )}
+                          {responseErrors &&
+                          responseErrors.map((respErr, index) => {
+                            if (respErr.lastName) {
+                              return (
+                                <p className="error">{respErr.lastName}</p>
+                              );
+                            }
+                          })}
                       </Form.Group>
                     </Col>
-                    <Col className="pr-1" md="4">
+                    {/* <Col className="pr-1" md="4">
                       <Form.Group>
                         <label className="card-title font-weight-bold">
                           Timezone
                         </label>
+                        {console.log(defaultTimezoneOption)}
                         <Controller
                           name="timezone"
-                          {...register("timezone", { required: true })}
+                           {...register("timezone", { required: true })}
                           control={control}
                           className=""
-                          defaultValue={null}
                           render={({ field }) => (
                             <Select
                               className="small"
-                              {...field}
+                              // Set the selected option
+                             //onChange={(selectedOption) => field.onChange(selectedOption.value)} // Update form field value on change
+                              onChange={(value) => setTimezone(value.value)}
                               options={
                                 timezones &&
                                 timezones.map((list, index) => ({
@@ -200,6 +236,7 @@ export default function Companyadd() {
                                     list.timeZone + "(" + list.gmtOffset + ")",
                                 }))
                               }
+                              value={defaultTimezoneOption}
                             />
                           )}
                         />
@@ -215,7 +252,7 @@ export default function Companyadd() {
                             }
                           })}
                       </Form.Group>
-                    </Col>
+                    </Col> */}
                   </Row>
                   <Row>
                     <Col className="pr-1" md="4">
@@ -224,6 +261,7 @@ export default function Companyadd() {
                           Company
                         </label>
                         <Form.Control
+                          defaultValue={storedData.companyName}
                           name="company"
                           placeholder="Company"
                           type="text"
@@ -259,6 +297,7 @@ export default function Companyadd() {
                           Username
                         </label>
                         <Form.Control
+                          defaultValue={storedData.userName}
                           name="userName"
                           placeholder="Username"
                           type="text"
@@ -294,7 +333,8 @@ export default function Companyadd() {
                           Email address
                         </label>
                         <Form.Control
-                           name="email"
+                          defaultValue={storedData.email}
+                          name="email"
                           placeholder="Email"
                           type="email"
                           onChange={(e) => setEmail(e.target.value)}
@@ -326,6 +366,7 @@ export default function Companyadd() {
                           Password
                         </label>
                         <Form.Control
+                          defaultValue={storedData.password}
                           placeholder="Password"
                           type="password"
                           name="password"
@@ -370,7 +411,11 @@ export default function Companyadd() {
                           className="small"
                           defaultValue={null}
                           render={({ field }) => (
-                            <Select className="small" onChange={(e) => setSipProfile(e.target.value)} {...field} />
+                            <Select
+                              className="small"
+                              onChange={(e) => setSipProfile(e.target.value)}
+                              {...field}
+                            />
                           )}
                         />
                         {sipprofile == null && errors.sipprofile && (
@@ -379,7 +424,9 @@ export default function Companyadd() {
                         {responseErrors &&
                           responseErrors.map((respErr, index) => {
                             if (respErr.sipprofile) {
-                              return <p className="error">{respErr.sipprofile}</p>;
+                              return (
+                                <p className="error">{respErr.sipprofile}</p>
+                              );
                             }
                           })}
                       </Form.Group>
@@ -396,7 +443,11 @@ export default function Companyadd() {
                           className="small"
                           defaultValue={null}
                           render={({ field }) => (
-                            <Select className="small" onChange={(e) => setRole(e.target.value)} {...field} />
+                            <Select
+                              className="small"
+                              onChange={(e) => setRole(e.target.value)}
+                              {...field}
+                            />
                           )}
                         />
                         {role == null && errors.role && (
@@ -422,7 +473,11 @@ export default function Companyadd() {
                           className="small"
                           defaultValue={null}
                           render={({ field }) => (
-                            <Select className="small" onChange={(e) => setTrunk(e.target.value)} {...field} />
+                            <Select
+                              className="small"
+                              onChange={(e) => setTrunk(e.target.value)}
+                              {...field}
+                            />
                           )}
                         />
                         {trunk == null && errors.trunk && (
@@ -443,9 +498,13 @@ export default function Companyadd() {
                         <label className="card-title font-weight-bold required-field">
                           Status
                         </label>
-                        <select className="form-control small" onChange={(e)=>setStatus(e.target.value)}>
-                        <option value="0">Active</option>
-                        <option value="1">Inactive</option>
+                        <select
+                          className="form-control small"
+                          defaultValue={storedData.status}
+                          onChange={(e) => setStatus(e.target.value)}
+                        >
+                          <option value="0">Active</option>
+                          <option value="1">Inactive</option>
                         </select>
                       </Form.Group>
                     </Col>
@@ -455,6 +514,7 @@ export default function Companyadd() {
                           Channel
                         </label>
                         <Form.Control
+                          defaultValue={storedData.channel}
                           name="channel"
                           placeholder="Channel"
                           type="text"
@@ -470,7 +530,7 @@ export default function Companyadd() {
                         {errors.channel && (
                           <p className="error">{errors.channel.message}</p>
                         )}
-                         {responseErrors &&
+                        {responseErrors &&
                           responseErrors.map((respErr, index) => {
                             if (respErr.channel) {
                               return <p className="error">{respErr.channel}</p>;
@@ -484,6 +544,7 @@ export default function Companyadd() {
                           Domain
                         </label>
                         <Form.Control
+                          defaultValue={storedData.domain}
                           name="domain"
                           placeholder="Domain"
                           type="text"
@@ -512,6 +573,7 @@ export default function Companyadd() {
                         </label>
                         <Form.Control
                           // defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                          defaultValue={storedData.address}
                           placeholder="Home Address"
                           type="text"
                           onChange={(e) => setAddress(e.target.value)}
@@ -527,9 +589,9 @@ export default function Companyadd() {
                         </label>
                         <Form.Control
                           // defaultValue="Mike"
-                          name="city"
                           placeholder="City"
                           type="text"
+                          defaultValue={storedData.city}
                           onChange={(e) => setCity(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
@@ -541,6 +603,7 @@ export default function Companyadd() {
                         </label>
                         <Form.Control
                           // defaultValue="Andrew"
+                          defaultValue={storedData.state}
                           name="state"
                           placeholder="State"
                           type="text"
@@ -554,6 +617,7 @@ export default function Companyadd() {
                           Postal Code
                         </label>
                         <Form.Control
+                          defaultValue={storedData.pincode}
                           name="pincode"
                           placeholder="ZIP Code"
                           type="number"
@@ -569,10 +633,11 @@ export default function Companyadd() {
                           Contact Number
                         </label>
                         <Form.Control
+                          defaultValue={storedData.contactNumber}
                           name="phone"
-                         // placeholder="First Name"
+                          placeholder="First Name"
                           type="text"
-                           onChange={(e) => setPhoneNumber(e.target.value)}
+                          // onChange={(e) => setFirstName(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -583,10 +648,11 @@ export default function Companyadd() {
                         </label>
                         <Select
                           className="small"
+                          value={defaultCountryOption}
                           onChange={(value) => setCountry(value.value)}
                           options={
                             countrylist &&
-                            countrylist.map((clist, index) => ({
+                            countrylist.map((clist) => ({
                               label: clist.nicename,
                               value: clist.id,
                             }))
@@ -596,12 +662,12 @@ export default function Companyadd() {
                     </Col>
                   </Row>
                   <div className="col d-flex justify-content-center ">
-                    <Button
+                    <button
                       type="submit"
                       className="btn-primary btn-fill btn m-1"
                     >
                       Save
-                    </Button>
+                    </button>
                     <Link
                       to="/admin/company"
                       className="btn btn-dark btn-fill m-1"

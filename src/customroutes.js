@@ -17,13 +17,20 @@
 */
 
 import Companyadd from "views/company/Companyadd";
-
+import Companyedit from "views/company/Companyedit";
 const customRoutes = [
   {
     path: "/companyadd",
     name: "Add Company",
     icon: "nc-icon nc-single-02",
     component: Companyadd,
+    layout: "/admin"
+  },
+  {
+    path: "/companyedit",
+    name: "Edit Company",
+    icon: "nc-icon nc-single-02",
+    component: Companyedit,
     layout: "/admin"
   }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        

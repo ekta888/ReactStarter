@@ -5,7 +5,6 @@ import Gridview from "components/Custom/Gridview";
 //import test from "views/Company/Companyadd";
 import { Container, Row, Col } from "react-bootstrap";
 export default function Setgridbtn(props) {
-  console.log("2",455);
   const history = useHistory();
   const handleClick =  () => {
    history.push(`${props.componentName}`);

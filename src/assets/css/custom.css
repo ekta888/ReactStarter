@@ -95,3 +95,9 @@ input:checked + .slider
 {
   box-shadow: 0 0 0 2px #007bff, 0 0 8px #007bff;
 }
+
+.close {
+  font-size: 45px;
+  font-weight: 600;
+}
+

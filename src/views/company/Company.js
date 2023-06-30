@@ -5,9 +5,9 @@ import Gridbtn from "components/Custom/Setgridbtn";
 import Editbtn from "components/Custom/Editbtn";
 import Deletebtn from "components/Custom/Deletebtn";
 import Companysearch from "./Companysearch";
+import Totalrecords from "components/Custom/Totalrecords";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-console.log(Editbtn);
 import {
   Badge,
   Button,
@@ -36,7 +36,7 @@ export default function Company() {
       .catch((error) => {
         console.error("Error fetching book data:", error);
       });
-  }, []);
+  }, [statusValue]);
   const [toggleValue, setToggleValue] = useState(false);
 
   const handleToggleChange = (value) => {
@@ -52,27 +52,32 @@ export default function Company() {
   const handleClearObject = () => {
     setSearchResponse({});
   };
+  const handleEdit = (editData) => {
+    localStorage.setItem("companyData", JSON.stringify(editData));
+  };
   const handleCheckboxChange = async (value, cardId) => {
-    setStatusValue(value);
-    console.log('Checkbox Value:', value);
-    console.log('Card ID:', cardId);
+    //setStatusValue(value);
+    console.log("Checkbox Value:", value);
+    console.log("Card ID:", cardId);
     try {
-      const response =  await axios.put(`/updateStatus/${cardId}`, { status: value == true ?"0": "1" });
-      console.log('Status updated:', response.data);
-      if(response.data.status == 200){
+      const response = await axios.put(`/updateStatus/${cardId}`, {
+        status: value == true ? "0" : "1",
+      });
+
+      if (response.data.status == 200) {
+        //setStatusValue(value);
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
         });
-      }else{
+      } else {
         toast.error(response.data.error, {
           position: toast.POSITION.TOP_RIGHT,
         });
       }
     } catch (error) {
-      console.error('Error updating status:', error);
+      console.error("Error updating status:", error);
       // Handle error here
     }
-    
   };
   console.log("searchResponse", searchResponse);
   const cardsPerPage = 6;
@@ -83,6 +88,7 @@ export default function Company() {
           .slice((currentPage - 1) * cardsPerPage, currentPage * cardsPerPage)
           .map((card, index) => (
             <div key={index}>
+              {console.log("card9999", card)}
               <div className="card m-2">
                 <div className="card-body">
                   <div className="row">
@@ -112,21 +118,36 @@ export default function Company() {
                   <li className="list-group-item">
                     <strong>Status:</strong>
                     {card.status === "0" ? (
-                      <label class="switch ml-2">
-                        <input type="checkbox" defaultChecked onChange={(e) => handleCheckboxChange(e.target.checked, card._id)} />
-                        <span class="slider"></span>
+                      <label className="switch ml-2">
+                        <input
+                          type="checkbox"
+                          defaultChecked
+                          onChange={(e) =>
+                            handleCheckboxChange(e.target.checked, card._id)
+                          }
+                        />
+                        <span className="slider"></span>
                       </label>
                     ) : (
-                      <label class="switch  ml-2">
-                        <input type="checkbox" onChange={(e) => handleCheckboxChange(e.target.checked, card._id)} />
-                        <span class="slider"></span>
+                      <label className="switch  ml-2">
+                        <input
+                          type="checkbox"
+                          onChange={(e) =>
+                            handleCheckboxChange(e.target.checked, card._id)
+                          }
+                        />
+                        <span className="slider"></span>
                       </label>
                     )}
                   </li>
                 </ul>
                 <div className="card-body d-flex justify-content-between">
-                  <Editbtn />
-                  <Deletebtn />
+                  <Editbtn
+                    idToEdit={card._id}
+                    editData={card}
+                    editComponent={`companyedit/${card._id}`}
+                  />
+                  <Deletebtn idToDelete={card._id} />
                 </div>
               </div>
             </div>
@@ -136,6 +157,7 @@ export default function Company() {
           .map((card, index) => (
             // Render the cards here
             <div key={index}>
+              {console.log("card9999", card)}
               <div className="card m-2">
                 <div className="card-body">
                   <div className="row">
@@ -165,21 +187,37 @@ export default function Company() {
                   <li className="list-group-item">
                     <strong>Status:</strong>
                     {card.status === "0" ? (
-                      <label class="switch ml-2">
-                        <input type="checkbox" defaultChecked onChange={(e) => handleCheckboxChange(e.target.checked, card._id)} />
-                        <span class="slider"></span>
+                      <label className="switch ml-2">
+                        <input
+                          type="checkbox"
+                          defaultChecked
+                          onChange={(e) =>
+                            handleCheckboxChange(e.target.checked, card._id)
+                          }
+                        />
+                        <span className="slider"></span>
                       </label>
                     ) : (
-                      <label class="switch  ml-2">
-                        <input type="checkbox" onChange={(e) => handleCheckboxChange(e.target.checked, card._id)} />
-                        <span class="slider"></span>
+                      <label className="switch  ml-2">
+                        <input
+                          type="checkbox"
+                          onChange={(e) =>
+                            handleCheckboxChange(e.target.checked, card._id)
+                          }
+                        />
+                        <span className="slider"></span>
                       </label>
                     )}
                   </li>
                 </ul>
                 <div className="card-body d-flex justify-content-between">
-                  <Editbtn />
-                  <Deletebtn  />
+                  <Editbtn
+                    idToEdit={card._id}
+                    editData={card}
+                    editComponent={`companyedit/${card._id}`}
+                    handleEdit={handleEdit}
+                  />
+                  <Deletebtn idToDelete={card._id} />
                 </div>
               </div>
             </div>
@@ -187,7 +225,8 @@ export default function Company() {
 
   return (
     <>
-      
+      <ToastContainer />
+
       <Gridbtn
         displaymultiplegridview="true"
         displayView={displayGridView}
@@ -195,24 +234,33 @@ export default function Company() {
         toggleValue={toggleValue}
         setToggleValue={handleToggleChange}
       />
+
       {toggleValue ? (
         <Companysearch
           onApiResponse={handleApiResponse}
           onRestClearResponse={handleClearObject}
         />
       ) : null}
+      <div className="row">
+        <div className="col">
+          <Totalrecords totalItem={totalCards} />
+        </div>
+      </div>
       <div className="container list-company" fluid>
-      <ToastContainer />
         <div className="row row-cols-1 row-cols-md-1 row-cols-xl-3">
           {renderedCards}
         </div>
       </div>
-      <Pagination
-        currentPage={currentPage}
-        cardsPerPage={cardsPerPage}
-        totalCards={companies.length}
-        onPageChange={setCurrentPage}
-      />
+      <div className="row">
+        <div className="col">
+        <Pagination
+          currentPage={currentPage}
+          cardsPerPage={cardsPerPage}
+          totalCards={companies.length}
+          onPageChange={setCurrentPage}
+        />
+      </div>
+    </div>
     </>
   );
 }
