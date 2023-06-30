@@ -34,3 +34,12 @@ exports.sendmail = () => {
 exports.generateToken = () => {
 	return Math.random().toString(36).substring(2, 30) + Math.random().toString(36).substring(2, 30)
 }
+exports.generateUid = (length = 12) =>{
+	let result = '';
+	const characters = '0123456789';
+	const charactersLength = characters.length;
+	for (let i = 0; i < length; i++) {
+	  result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return parseInt(result);
+}

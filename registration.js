@@ -44,6 +44,7 @@ router.post('/signup',
 		} else {
 			console.log("out");
 			let companyDetails = new companyModel({
+				companyId: common.generateUid(),
 				userType: req.body.userType,
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,

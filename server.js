@@ -39,6 +39,8 @@ app.post('/add', company);
 app.get('/search', company);
 app.get('/list', company);
 app.put('/updateStatus/:id',company);
+app.put('/deleteSingle/:id',company);
+app.put('/editcompany/:companyid',company);
 // app.get("/gettimezonelist", (req, res) => {
 //   res.render(timezonelist);
 // });

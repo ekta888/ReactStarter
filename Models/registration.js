@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 companySchema = new Schema({
-	companyId: { type: Number },
+	companyId: { type: Number,default: null,index: true },
 	userType: { type: Number, default: null, index: true },
 	firstName: { type: String, default: null },
 	lastName: { type: String, default: null },
@@ -23,9 +23,11 @@ companySchema = new Schema({
 	country: { type: Number, default: null },
 	timezone: { type: String, default: null },
 	createdAt: { type: String, default: null },
+	updatedAt: { type: String, default: null },
 	policyAccepted: { type: Number, default: null },
 	isVerified: { type: String, default: 0 },
-	verificationToken: { type: String, default: null }
+	verificationToken: { type: String, default: null },
+	isDeleted: { type: String, default: false }
 })
 companySchema = mongoose.model('db_companies', companySchema);
 module.exports = companySchema;
