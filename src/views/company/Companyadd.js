@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import axios from "axios";
@@ -26,6 +26,7 @@ export default function Companyadd() {
     formState: { errors },
     control,
   } = useForm();
+  const history  = new useHistory();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [timezone, setTimezone] = useState(null);
@@ -84,12 +85,16 @@ export default function Companyadd() {
             toast.success(response.data.message, {
               position: toast.POSITION.TOP_RIGHT,
             });
+            
           }
           if (response.data.status === 400) {
             toast.error(response.data.message, {
               position: toast.POSITION.TOP_RIGHT,
             });
           }
+          setTimeout(() => {
+            history.push('/admin/company');
+          }, 2500);
         },
         (error) => {
           console.log("4444", error);

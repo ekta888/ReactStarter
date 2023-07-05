@@ -9,11 +9,14 @@ export default function Setgridbtn(props) {
   const handleClick =  () => {
    history.push(`${props.componentName}`);
   };
+  const handleMultipleDelete = () =>{
+    props.multiDelete();
+  }
   return (
     <div className="container mb-3">
       <div className="row">
         <div className="col">
-          <button className="btn btn-danger  m-1">Delete</button>
+          <button className="btn btn-danger  m-1" onClick={handleMultipleDelete}>Delete</button>
         </div>
         <div className="col d-flex justify-content-end ">
           <button className="btn-primary  btn  m-1" onClick={handleClick}>Add</button>

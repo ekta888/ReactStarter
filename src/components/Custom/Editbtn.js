@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 export default function Editbtn(props) {
   const history = useHistory();
-  console.log("propsssss",props.editData);
-
   const handleEditClick = () => {
      props.handleEdit(props.editData);
     history.push(`${props.editComponent}`);

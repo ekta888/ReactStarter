@@ -19,7 +19,6 @@ export default function Deletebtn(props) {
       const response = await axios.put(`/deleteSingle/${props.idToDelete}`, {
         isDeleted: true,
       });
-      console.log("Deleteddd updated:", response.data);
       if (response.data.status == 200) {
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
@@ -32,6 +31,7 @@ export default function Deletebtn(props) {
     } catch (error) {
       console.error("Error updating status:", error);
     }
+    setShowModal(false);
   };
 
   const handleShowModal = () => {

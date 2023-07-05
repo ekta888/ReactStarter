@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import axios from "axios";
@@ -18,17 +18,16 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-
 export default function Companyedit() {
   const storedDataString = localStorage.getItem("companyData");
   const storedData = JSON.parse(storedDataString);
-  console.log("storedData----", storedData);
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm();
+  const history = new useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [timezone, setTimezone] = useState(null);
@@ -51,6 +50,8 @@ export default function Companyedit() {
   const [responseErrors, setResponseErrors] = useState("");
   const [timezones, setTimezoneList] = useState("");
   const [countrylist, setCountryList] = useState("");
+  //const [defaultCountryOption, setdefaultCountryOption] = useState('');
+
    let defaultCountryOption = null;
    let defaultTimezoneOption = null;
   if (countrylist) {
@@ -70,12 +71,7 @@ export default function Companyedit() {
       }
     });
   }
-  console.log("defaultTimezoneOption", defaultTimezoneOption);
-
- 
   const onSubmit = async (data) => {
-  console.log("555555",data);
-  console.log("9990",address);
     axios
       .put(`/editcompany/${storedData.companyId}`, {
         firstName: data.firstName ? data.firstName : "",
@@ -102,10 +98,6 @@ export default function Companyedit() {
       .then(
         (response) => {
           if (response.data.status === 200) {
-            // window.scrollTo({
-            //   top: 0,
-            //   behavior: 'smooth',
-            // });
             toast.success(response.data.message, {
               position: toast.POSITION.TOP_RIGHT,
             });
@@ -115,9 +107,11 @@ export default function Companyedit() {
               position: toast.POSITION.TOP_RIGHT,
             });
           }
+          setTimeout(() => {
+            history.push('/admin/company');
+          }, 2500);
         },
         (error) => {
-          console.log("4444", error);
           setResponseErrors(error.response.data.error);
         }
       );
@@ -125,7 +119,7 @@ export default function Companyedit() {
   useEffect(() => {
     timeZoneDrp(setTimezoneList);
     countryDrp(setCountryList);
-  }, []);
+  }, [firstName]);
   return (
     <>
       <Container fluid>
@@ -134,7 +128,7 @@ export default function Companyedit() {
           <Col md="12">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Add Company</Card.Title>
+                <Card.Title as="h4">Edit Company</Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -648,13 +642,19 @@ export default function Companyedit() {
                         </label>
                         <Select
                           className="small"
+                          //defaultValue={{label:"test",value:"27"}}
                           value={defaultCountryOption}
+                          /*value={countrylist &&
+                            countrylist.map(function(option) {
+                            return option.value === 19;
+                          })}*/
                           onChange={(value) => setCountry(value.value)}
                           options={
                             countrylist &&
                             countrylist.map((clist) => ({
                               label: clist.nicename,
                               value: clist.id,
+                             // selected: {clist.id == '19'}
                             }))
                           }
                         />
