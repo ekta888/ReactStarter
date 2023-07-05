@@ -15,16 +15,6 @@ const loginModel = require('./Models/login');
 
 app.use(cors());
 
-app.use(
-  cors({
-    origin: [
-      "http://10.10.10.22:3005",
-    ],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
-//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.post('/signup', registration);
@@ -41,6 +31,8 @@ app.get('/list', company);
 app.put('/updateStatus/:id',company);
 app.put('/deleteSingle/:id',company);
 app.put('/editcompany/:companyid',company);
+app.delete('/company-multidelete', company);
+
 // app.get("/gettimezonelist", (req, res) => {
 //   res.render(timezonelist);
 // });

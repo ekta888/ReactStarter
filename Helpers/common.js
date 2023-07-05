@@ -34,7 +34,7 @@ exports.sendmail = () => {
 exports.generateToken = () => {
 	return Math.random().toString(36).substring(2, 30) + Math.random().toString(36).substring(2, 30)
 }
-exports.generateUid = (length = 12) =>{
+exports.generateUid = (length = 12) => {
 	let result = '';
 	const characters = '0123456789';
 	const charactersLength = characters.length;
@@ -42,4 +42,7 @@ exports.generateUid = (length = 12) =>{
 	  result += characters.charAt(Math.floor(Math.random() * charactersLength));
 	}
 	return parseInt(result);
+}
+exports.multipleDataSoftDelete = (id,model,field) => {
+
 }

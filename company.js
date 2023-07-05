@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
-let mongodbObjectId = require('mongodb').ObjectId;
-
+let mongodbObjectId = require("mongodb").ObjectId;
 
 const companyModel = require("./Models/registration");
 const { check, validationResult } = require("express-validator");
 const common = require("./Helpers/common");
 router.get("/list", async (req, res) => {
   try {
-    //const companies = await companyModel.find({ isDeleted: 0 }).exec();
+   // const companies = await companyModel.find({ isDeleted: false }).exec();
     const companies = await companyModel.find().exec();
     res.json({ companies: companies, status: 200 });
   } catch (error) {
@@ -264,12 +263,12 @@ router.put(
       return res.status(400).json({ error: extractedErrors });
     } else {
       console.log("out");
-     
+
       try {
         const result = await companyModel.findOneAndUpdate(
           { companyId: companyId }, // Find the document based on companyId
           {
-            $set: { 
+            $set: {
               firstName: req.body.firstName,
               lastName: req.body.lastName,
               userName: req.body.userName,
@@ -291,11 +290,11 @@ router.put(
               policyAccepted: req.body.policyAccepted,
               status: req.body.status,
               updatedAt: Date.now(),
-            }
+            },
           },
           { new: true } // Return the updated document after the update is applied
         );
-      
+
         console.log(result, "HARSH");
         if (result) {
           return res.json({
@@ -318,4 +317,17 @@ router.put(
     }
   }
 );
+router.delete("/company-multidelete", async (req, res) => {
+  console.log(req.body, " me hu simple");
+  const selectedIds = req.body;
+  try {
+    await companyModel.updateMany({ _id: { $in: selectedIds } }, { isDeleted: true });
+    console.log('Records updated successfully');
+    res.json({ message: 'Bulk delete operation completed successfully',status:200 });
+  } catch (error) {
+    // Handle error and send an error response
+    console.error('Error performing bulk delete operation:', error);
+    res.json({ error: 'An error occurred during the bulk delete operation',status:400 });
+  }
+});
 module.exports = router;
