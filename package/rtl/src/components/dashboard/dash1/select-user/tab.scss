@@ -1,0 +1,40 @@
+.select-user-tabs.nav-tabs {
+  border-bottom: 0 !important;
+  .nav-item {
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+  }
+  .nav-link {
+    position: relative;
+    color: rgba(#fff, 0.6) !important;
+    border: 0px;
+    padding: 20px;
+
+    &:hover {
+      color: rgba(#fff, 1);
+    }
+  }
+  .nav-item.show .nav-link,
+  .nav-link.active {
+    color: rgba(#fff, 1) !important;
+    background-color: rgba(0, 0, 0, 0.05);
+    &::after {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      margin-left: -10px;
+      width: 0;
+      height: 0;
+      border: solid transparent;
+      border-width: 10px;
+      border-top-color: #2cabe3;
+      content: '';
+      pointer-events: none;
+    }
+  }
+}
