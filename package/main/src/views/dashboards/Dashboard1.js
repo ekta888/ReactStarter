@@ -1,67 +1,86 @@
-import { Col, Row } from 'reactstrap';
-import BreadCrumbs from '../../layouts/breadcrumbs/BreadCrumbs';
-import TopCards from '../../components/dashboard/dash1/topCards/TopCards';
-import ProductYearlySales from '../../components/dashboard/dash1/product-yearly-sales/ProductYearlySales';
-import SalesWeek from '../../components/dashboard/dash1/sales-week/SalesWeek';
-import SelectUser from '../../components/dashboard/dash1/select-user/SelectUser';
-import BalanceCard from '../../components/dashboard/dash1/balance-card/BalanceCard';
-import ManageUsers from '../../components/dashboard/dash1/manage-users/ManageUsers';
-import CalendarApp from '../apps/calendar/CalendarApp';
-import TaskList from '../../components/dashboard/dash1/todo-list/TaskList';
-import Feeds from '../../components/dashboard/dash1/feeds/Feeds';
-import PostCard from '../../components/dashboard/dash1/post-card/PostCard';
+
+import React, { useState } from 'react';
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  Col,
+  Card,
+  CardBody,
+} from 'reactstrap';
+
+import Contactc from '../../components/custom/contactc/Contactc';
+import ContactcDetails from '../../components/custom/contactc/ContactcDetails';
+import TwoColumn from '../../components/twoColumn/TwoColumn';
+import NoteSearch from '../../components/apps/contact/ContactSerch';
+
+
+// import Data from '../../data/contacts/ContactsData';
 
 const Dashboard1 = () => {
+   console.log('Data----', Contactc);
+  const [activeTab, setActiveTab] = useState('1');
+
+  const toggle = (tab) => {
+    if (activeTab !== tab) setActiveTab(tab);
+  };
   return (
     <>
-      <BreadCrumbs />
-      <Row>
-        <Col lg="12">
-          <TopCards />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg="8">
-          <ProductYearlySales />
-        </Col>
-        <Col lg="4">
-          <SalesWeek />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg="8">
-          <SelectUser />
-        </Col>
-        <Col lg="4">
-          <BalanceCard />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="12">
-          <ManageUsers />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="6">
-          <TaskList />
-        </Col>
-        <Col lg="6">
-          <Feeds />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="12">
-          <CalendarApp />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg="12">
-          <PostCard />
-        </Col>
-      </Row>
+      <Nav tabs>
+        <NavItem>
+          <NavLink
+            className={activeTab === '1' ? 'active' : ''}
+            onClick={() => {
+              toggle('1');
+            }}
+          >
+            Call History
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={activeTab === '2' ? 'active' : ''}
+            onClick={() => {
+              toggle('2');
+            }}
+          >
+            Contacts
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <TabContent className="p-4" activeTab={activeTab}>
+        <TabPane tabId="1">
+          <Row>
+            <Col sm="12"></Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="2">
+          {/* <Row>
+            <div className="p-3 border-bottom text-end">
+              <Button color="danger" className="" onClick={modelToggle}>
+                Add New Contact
+              </Button>
+              <Contactc />
+            </div>
+          </Row> */}
+           <Card>
+      <CardBody>
+      <TwoColumn
+            leftContent={
+              <>
+               <NoteSearch />
+               <Contactc />
+              </>
+            }
+            rightContent={<ContactcDetails />}
+          />
+      </CardBody>
+    </Card>
+        </TabPane>
+      </TabContent>
     </>
   );
 };

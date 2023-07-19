@@ -6,7 +6,7 @@ import Customizer from './customizer/Customizer';
 import Sidebar from './sidebars/vertical/Sidebar';
 import HorizontalHeader from './header/HorizontalHeader';
 import HorizontalSidebar from './sidebars/horizontal/HorizontalSidebar';
-import Dialpad from '../components/custom/Dialpad';
+ import Dialpad from '../components/custom/Dialpad';
 
 const FullLayout = () => {
   const customizerToggle = useSelector((state) => state.customizer.customizerSidebar);
@@ -37,10 +37,10 @@ const FullLayout = () => {
           {/********Middle Content**********/}
           <Container fluid className="p-4 boxContainer">
           <Row>
-              <Col lg="4">
+              <Col md="4">
               <Dialpad />
             </Col>       
-           <Col lg="8">
+           <Col md="8">
             <div className={isFixedSidebar && LayoutHorizontal ? 'HsidebarFixed' : ''}>
               <Outlet />
             </div>
