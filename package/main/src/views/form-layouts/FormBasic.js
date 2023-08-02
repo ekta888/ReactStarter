@@ -318,6 +318,7 @@ const BasicForm = () => {
               <Row>
                 <Label sm="2">Text</Label>
                 <Col sm="10">
+                <InputGroupText>$</InputGroupText>
                   <Input type="text" defaultValue="Akhsay Kumar" />
                 </Col>
               </Row>
@@ -796,9 +797,7 @@ const BasicForm = () => {
                 <InputGroup>
                   <Input type="text" placeholder="Username" />
 
-                  <InputGroupText>
-                    <i className="bi bi-person"></i>
-                  </InputGroupText>
+                  
                 </InputGroup>
               </FormGroup>
               <FormGroup>

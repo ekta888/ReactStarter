@@ -1,5 +1,10 @@
 
-import React, { useState } from 'react';
+import React,{useState} from 'react';
+// import {  
+//   Card,
+//   CardBody,
+// } from 'reactstrap';
+
 import {
   TabContent,
   TabPane,
@@ -16,10 +21,9 @@ import Contactc from '../../components/custom/contactc/Contactc';
 import ContactcDetails from '../../components/custom/contactc/ContactcDetails';
 import TwoColumn from '../../components/twoColumn/TwoColumn';
 import NoteSearch from '../../components/apps/contact/ContactSerch';
-
-
-// import Data from '../../data/contacts/ContactsData';
-
+//import Data from '../../data/contacts/ContactsData';
+// import OnCallUser from '../../components/custom/OnCallUser';
+  
 const Dashboard1 = () => {
    console.log('Data----', Contactc);
   const [activeTab, setActiveTab] = useState('1');
@@ -29,7 +33,7 @@ const Dashboard1 = () => {
   };
   return (
     <>
-      <Nav tabs>
+       <Nav tabs>
         <NavItem>
           <NavLink
             className={activeTab === '1' ? 'active' : ''}
@@ -50,22 +54,15 @@ const Dashboard1 = () => {
             Contacts
           </NavLink>
         </NavItem>
-      </Nav>
-      <TabContent className="p-4" activeTab={activeTab}>
+      </Nav> 
+       <TabContent className="p-4" activeTab={activeTab}>
         <TabPane tabId="1">
           <Row>
             <Col sm="12"></Col>
           </Row>
         </TabPane>
         <TabPane tabId="2">
-          {/* <Row>
-            <div className="p-3 border-bottom text-end">
-              <Button color="danger" className="" onClick={modelToggle}>
-                Add New Contact
-              </Button>
-              <Contactc />
-            </div>
-          </Row> */}
+          
            <Card>
       <CardBody>
       <TwoColumn
@@ -80,7 +77,12 @@ const Dashboard1 = () => {
       </CardBody>
     </Card>
         </TabPane>
-      </TabContent>
+      </TabContent> 
+      {/* //  <Card>
+      //   <CardBody>
+      //       <OnCallUser />
+      //   </CardBody>
+      //   </Card> */}
     </>
   );
 };

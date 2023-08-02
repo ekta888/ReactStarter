@@ -34,16 +34,7 @@ const digits = [
 export default function Dialpad() {
   const isMode = useSelector((state) => state.customizer.isDark);
   const classDisplay2 = isMode ? 'next3-dark-icon-container' : 'next3-icon-container';
-  const classDisplay6 = isMode ? 'next6-dark-container' : 'next6-container';
-  const classNextTop6Container = isMode ? 'next6-top-dark-container' : 'next6-topcontainer';
-  const classDisplayLabel6 = isMode ? 'next6-dark-label-font' : 'next6-label-font';
-  const classDisplaySipLabel6 = isMode ? 'next6-dark-sip-label-font' : 'next6-sip-label-font';
-  const classDisplayPhoneLabel7 = isMode
-    ? 'next7-dark-phonenumber-label-font'
-    : 'next7-phonenumber-label-font';
   console.log('ismode---', isMode);
-  const classDisplay12 = isMode ? 'next12-dark-container' : 'next12-container';
-  const classDisplayLabelFont12 = isMode ? 'next12-dark-label-font' : 'next12-label-font';
   const [inputValue, setInputValue] = useState('');
   const [displayFlag, setDisplayFlag] = useState(12);
   const [isMutted, setIsMutted] = useState(false);
@@ -86,8 +77,7 @@ export default function Dialpad() {
         displayFlag !== 8 &&
         displayFlag !== 9 &&
         displayFlag !== 10 &&
-        displayFlag !== 11 &&
-        displayFlag !== 12 && (
+        displayFlag !== 11 && displayFlag !== 12 && (
           <div className="custom-dial-pad">
             <div className="pad">
               <div className="dial-pad">
@@ -425,25 +415,26 @@ export default function Dialpad() {
                 <div className="next4-timetext">10:10:10</div>
               </div>
             </div>
-            <div className={`${classNextTop6Container} shadow-lg p-2 mb-5  rounded`}>
+
+            <div className="next6-container shadow-lg p-2 mb-5  rounded">
               <div className="d-flex justify-content-center">
-                <Label className={`${classDisplayLabel6}`}>Blind Transfer</Label>
+                <Label className="next6-label-font">Blind Transfer</Label>
                 <div>
                   <Label className="switch">
                     <input type="checkbox" />
                     <span className="slider"></span>
                   </Label>
                 </div>
-                <Label className={`${classDisplayLabel6}`}>Attended Transfer</Label>
+                <Label className="next6-label-font">Attended Transfer</Label>
               </div>
               <div>
                 <div className="dropdown-container mt-3">
-                  <Label className={` ${classDisplaySipLabel6}`}>Sip Devices</Label>
+                  <Label className="next6-sip-label-font col-md-4">Sip Devices</Label>
                   <Select
                     options={options}
                     isSearchable
                     onChange={handleSelect}
-                    className="col-md-10 select-custom-color"
+                    className="col-md-8 select-custom-color"
                   />
                 </div>
               </div>
@@ -455,11 +446,7 @@ export default function Dialpad() {
                 </span>
               </div>
               <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next4-back cust-tooltip"
-                  data-tooltip="Back"
-                  onClick={() => handleBackScreen(5)}
-                >
+                <span className="next4-action-dig next4-back" onClick={() => handleBackScreen(5)}>
                   <Icon.ChevronLeft size={40} color="#fff" />
                 </span>
               </div>
@@ -481,22 +468,22 @@ export default function Dialpad() {
               </div>
             </div>
 
-            <div className={`${classDisplay6} shadow-lg p-2 mb-5  rounded`}>
+            <div className="next6-container shadow-lg p-2 mb-5  rounded">
               <div className="d-flex justify-content-center">
-                <Label className={`${classDisplayLabel6}`}>Blind Transfer</Label>
+                <Label className="next6-label-font">Blind Transfer</Label>
                 <div>
                   <Label className="switch">
                     <input type="checkbox" />
                     <span className="slider"></span>
                   </Label>
                 </div>
-                <Label className={`${classDisplayLabel6}`}>Attended Transfer</Label>
+                <Label className="next6-label-font">Attended Transfer</Label>
               </div>
               <div>
                 <div className="dropdown-container">
                   <FormGroup>
                     <Row>
-                      <Label sm="2" className={`${classDisplayPhoneLabel7}`}>
+                      <Label sm="2" className="next7-phonenumber-label-font">
                         Enter Number
                       </Label>
                       <Col sm="10">
@@ -519,11 +506,7 @@ export default function Dialpad() {
                 </span>
               </div>
               <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next4-back cust-tooltip"
-                  data-tooltip="Back"
-                  onClick={() => handleBackScreen(5)}
-                >
+                <span className="next4-action-dig next4-back" onClick={() => handleBackScreen(5)}>
                   <Icon.ChevronLeft size={40} color="#fff" />
                 </span>
               </div>
@@ -544,12 +527,12 @@ export default function Dialpad() {
                 <div className="next4-timetext">10:10:10</div>
               </div>
             </div>
-            <div className={`${classDisplay6} shadow-lg p-2 mb-5  rounded`}>
+            <div className="next6-container shadow-lg p-2 mb-5  rounded">
               <div className=" mt-3 ">
                 <Row>
                   <Col md="12">
                     <FormGroup>
-                      <Label className={`${classDisplayLabel6}`}>IVR Devices</Label>
+                      <Label className="next6-label-font">IVR Devices</Label>
                       <Select
                         options={options}
                         isSearchable
@@ -568,11 +551,7 @@ export default function Dialpad() {
                 </span>
               </div>
               <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next4-back cust-tooltip"
-                  data-tooltip="Back"
-                  onClick={() => handleBackScreen(5)}
-                >
+                <span className="next4-action-dig next4-back" onClick={() => handleBackScreen(5)}>
                   <Icon.ChevronLeft size={40} color="#fff" />
                 </span>
               </div>
@@ -594,25 +573,25 @@ export default function Dialpad() {
               </div>
             </div>
 
-            <div className={`${classDisplay6} shadow-lg p-2 mb-5  rounded`}>
+            <div className="next6-container shadow-lg p-2 mb-5  rounded">
               <div className="d-flex justify-content-center">
-                <Label className={`${classDisplayLabel6}`}>Blind Transfer</Label>
+                <Label className="next6-label-font">Blind Transfer</Label>
                 <div>
                   <Label className="switch">
                     <input type="checkbox" />
                     <span className="slider"></span>
                   </Label>
                 </div>
-                <Label className={`${classDisplayLabel6}`}>Attended Transfer</Label>
+                <Label className="next6-label-font">Attended Transfer</Label>
               </div>
               <div>
                 <div className="dropdown-container mt-3">
-                  <Label className={`${classDisplaySipLabel6} col-md-2`}>Call Queue</Label>
+                  <Label className="next6-sip-label-font col-md-4">Call Queue</Label>
                   <Select
                     options={options}
                     isSearchable
                     onChange={handleSelect}
-                    className="col-lg-10 select-custom-color"
+                    className="col-lg-8 select-custom-color"
                   />
                 </div>
               </div>
@@ -624,11 +603,7 @@ export default function Dialpad() {
                 </span>
               </div>
               <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next4-back cust-tooltip"
-                  data-tooltip="Back"
-                  onClick={() => handleBackScreen(5)}
-                >
+                <span className="next4-action-dig next4-back" onClick={() => handleBackScreen(5)}>
                   <Icon.ChevronLeft size={40} color="#fff" />
                 </span>
               </div>
@@ -650,25 +625,25 @@ export default function Dialpad() {
               </div>
             </div>
 
-            <div className={`${classDisplay6} shadow-lg p-2 mb-5  rounded`}>
+            <div className="next6-container shadow-lg p-2 mb-5  rounded">
               <div className="d-flex justify-content-center">
-                <Label className={`${classDisplayLabel6}`}>Blind Transfer</Label>
+                <Label className="next6-label-font">Blind Transfer</Label>
                 <div>
                   <Label className="switch">
                     <input type="checkbox" />
                     <span className="slider"></span>
                   </Label>
                 </div>
-                <Label className={`${classDisplayLabel6}`}>Attended Transfer</Label>
+                <Label className="next6-label-font">Attended Transfer</Label>
               </div>
               <div>
                 <div className="dropdown-container mt-3">
-                  <Label className={`${classDisplaySipLabel6} col-md-2`}>Ring Group</Label>
+                  <Label className="next6-sip-label-font col-md-4">Ring Group</Label>
                   <Select
                     options={options}
                     isSearchable
                     onChange={handleSelect}
-                    className="col-lg-10 select-custom-color"
+                    className="col-lg-8 select-custom-color"
                   />
                 </div>
               </div>
@@ -680,11 +655,7 @@ export default function Dialpad() {
                 </span>
               </div>
               <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next4-back cust-tooltip"
-                  data-tooltip="Back"
-                  onClick={() => handleBackScreen(5)}
-                >
+                <span className="next4-action-dig next4-back" onClick={() => handleBackScreen(5)}>
                   <Icon.ChevronLeft size={40} color="#fff" />
                 </span>
               </div>
@@ -743,7 +714,7 @@ export default function Dialpad() {
                 <i className="bi bi-megaphone-fill" />
               </span>
               <div className="btn-pointer">
-                <span className="d-flex next3-action-dig hangup cust-tooltip" data-tooltip="Hangup">
+                <span className="d-flex next3-action-dig hangup">
                   <Icon.PhoneOff size={40} color="#FFF" />
                 </span>
               </div>
@@ -773,12 +744,12 @@ export default function Dialpad() {
                 <div className="next4-timetext">10:10:10</div>
               </div>
             </div>
-            <div className={`${classDisplay12} shadow-lg p-2 mb-5  rounded`}>
+            <div className="next12-container shadow-lg p-2 mb-5  rounded">
               <div className="">
                 <Row>
                   <Col md="12">
                     <FormGroup>
-                      <Label className={`${classDisplayLabelFont12}`}>Add Note</Label>
+                      <Label className="next12-label-font">Add Note</Label>
                       <Input type="textarea" rows="5" />
                     </FormGroup>
                   </Col>
@@ -786,17 +757,13 @@ export default function Dialpad() {
               </div>
             </div>
             <div className="d-flex next12-justify-content-evenly">
-              <div className="btn-pointer">
-                <span className="next4-action-dig next12-call cust-tooltip" data-tooltip="Submit">
+              <div className="btn-pointer"  data-tooltip="Submit">
+                <span className="next4-action-dig next12-call">
                   <Icon.Check size={40} color="#FFF" />
                 </span>
               </div>
-              <div className="btn-pointer">
-                <span
-                  className="next4-action-dig next12-back cust-tooltip"
-                  data-tooltip="Cancle"
-                  onClick={() => handleBackScreen(5)}
-                >
+              <div className="btn-pointer"  data-tooltip="Cancle">
+                <span className="next4-action-dig next12-back" onClick={() => handleBackScreen(5)}>
                   <Icon.X size={40} color="#fff" />
                 </span>
               </div>

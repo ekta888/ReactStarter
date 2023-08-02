@@ -16,7 +16,7 @@ export default function ContactcDetails() {
         </Button>
       </div>
       <Modal isOpen={modal} toggle={modelToggle} size="md">
-        <ModalHeader toggle={modelToggle}>Add Contact</ModalHeader>
+        <ModalHeader  toggle={modelToggle}>Add Contact</ModalHeader>
         <ContactAdd click={modelToggle} />
       </Modal>
     </>

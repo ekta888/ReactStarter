@@ -5,7 +5,7 @@ const initialState = {
   customizerSidebar: false,
   isRTL: false,
   isDark: false,
-  isMiniSidebar: false,
+  isMiniSidebar: true,
   sidebarBg: 'dark',
   isTopbarFixed: true,
   isMobileSidebar: false,
