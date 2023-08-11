@@ -20,17 +20,27 @@ import {
 import Contactc from '../../components/custom/contactc/Contactc';
 import ContactcDetails from '../../components/custom/contactc/ContactcDetails';
 import TwoColumn from '../../components/twoColumn/TwoColumn';
-import NoteSearch from '../../components/apps/contact/ContactSerch';
+import ContactcSearch from '../../components/custom/contactc/ContactcSearch';
 //import Data from '../../data/contacts/ContactsData';
 // import OnCallUser from '../../components/custom/OnCallUser';
   
 const Dashboard1 = () => {
    console.log('Data----', Contactc);
-  const [activeTab, setActiveTab] = useState('1');
-
+  const [activeTab, setActiveTab] = useState('2');
+  const [searchResults, setSearchResults] = useState([]);
+  const [displayCallInfo,setDisplayCallInfo] = useState({});
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
+  }
+  const handleInfoFlagChange = (data) => {
+    console.log("newFlag",data)
+    setDisplayCallInfo(data);
+  };
+  console.log("displayCallInfo",displayCallInfo)
+  console.log("788888",searchResults);
   return (
     <>
        <Nav tabs>
@@ -68,11 +78,11 @@ const Dashboard1 = () => {
       <TwoColumn
             leftContent={
               <>
-               <NoteSearch />
-               <Contactc />
+               <ContactcSearch onSearchResults={handleSearchResults} />
+               <Contactc onInfoFlagChange={handleInfoFlagChange} searchData={searchResults} />
               </>
             }
-            rightContent={<ContactcDetails />}
+            rightContent={<ContactcDetails displayInfo={displayCallInfo}  />}
           />
       </CardBody>
     </Card>

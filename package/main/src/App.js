@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Themeroutes from './routes/Router';
 import ThemeSelector from './layouts/theme/ThemeSelector';
 import Loader from './layouts/loader/Loader';
+import './assets/custom/general.css';
 
 const App = () => {
   const routing = useRoutes(Themeroutes);

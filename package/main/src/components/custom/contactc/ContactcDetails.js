@@ -1,13 +1,15 @@
-import React from 'react';
+import React,{useState} from 'react';
+//import axios from 'axios';
 import { Modal, ModalHeader, Button } from 'reactstrap';
 import ContactAdd from './ContactcAdd';
 
-export default function ContactcDetails() {
-  const [modal, setModal] = React.useState(false);
-
+export default function ContactcDetails(prop) {
+  console.log("propsss",prop);
+  const [modal, setModal] = useState(false);
+ // const [listData, setListData] = useState();
   const modelToggle = () => {
     setModal(!modal);
-  };
+  };  
   return(
     <>
       <div className="border-bottom p-3 text-end">
@@ -19,6 +21,9 @@ export default function ContactcDetails() {
         <ModalHeader  toggle={modelToggle}>Add Contact</ModalHeader>
         <ContactAdd click={modelToggle} />
       </Modal>
+      {prop.displayInfo.displayFlag && (
+          <h1>Test</h1>
+      )}
     </>
   );
 }

@@ -10,6 +10,14 @@ const SidebarData = [
     id: 1,
     collapisble: false,
   },
+  {
+    title: 'Callback',
+    href: '/callback/callback',
+    suffixColor: 'bg-white text-dark',
+    icon: <Icon.PhoneForwarded />,
+    id: 1,
+    collapisble: false,
+  },
   // {
   //   title: 'Dashboards',
   //   href: '/dashboards',

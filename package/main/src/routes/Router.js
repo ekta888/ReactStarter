@@ -13,6 +13,7 @@ const Dashboard3 = Loadable(lazy(() => import('../views/dashboards/Dashboard3'))
 const Dashboard4 = Loadable(lazy(() => import('../views/dashboards/Dashboard4')));
 const Dashboard5 = Loadable(lazy(() => import('../views/dashboards/Dashboard5')));
 const Dashboard6 = Loadable(lazy(() => import('../views/dashboards/Dashboard6')));
+const Callback = Loadable(lazy(() => import('../views/callback/Callback')));
 const About = Loadable(lazy(() => import('../views/About')));
 
 /***** Apps ****/
@@ -112,6 +113,7 @@ const ThemeRoutes = [
     children: [
       { path: '/', name: 'Home', element: <Navigate to="/dashboards/dashboard1" /> },
       { path: '/dashboards/dashboard1', name: 'Analytical', exact: true, element: <Dashboard1 /> },
+      { path: '/callback/callback', name: 'Analytical', exact: true, element: <Callback /> },
       {
         path: '/dashboards/dashboard2',
         name: 'Demographical',
