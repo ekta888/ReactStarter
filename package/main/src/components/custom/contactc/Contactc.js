@@ -33,8 +33,7 @@ export default function Contactc(prop) {
   const [editModal, setEditModal] = useState(false);
   const [selectedEditUser, setSelectedEditUser] = useState(null);
   const [searchResult, setSearchResult] = useState();
-  console.log('process.env.AUTH_TOKEN', process.env.REACT_APP_AUTH_TOKEN);
-  const authToken = process.env.REACT_APP_AUTH_TOKEN;
+  const authToken = localStorage.getItem('authToken');
   const modelCallbackAddToggle = (user) => {
     setSelectedEditUser(user);
     setCallbackAddModal(!callbackAddModal);
@@ -136,7 +135,7 @@ export default function Contactc(prop) {
        axios
       .get(`${process.env.REACT_APP_API_URL}/lead-management/leads-with-call-info/${leadUuid}`, {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       })
       .then((response) => {
@@ -154,6 +153,9 @@ export default function Contactc(prop) {
     setSelectedEditUser(user);
     setEditModal(!editModal);
   };
+  // useEffect(()=>{
+
+  // },[prop])
   return (
     <>
       <Nav>
@@ -192,20 +194,6 @@ export default function Contactc(prop) {
                       </span>
                     </div>
                 </div>
-                {/* <div className="d-flex flex-shrink-0">
-                  <span className="text-primary mx-1">
-                    <i className="bi bi-pencil-square" onClick={() => modelEditToggle(user)} />{' '}
-                  </span>
-                  <span
-                    className="text-danger"
-                    onClick={() => {
-                      setSelectedDeleteUser(user.lead_management_uuid);
-                      handleDeletetoggle();
-                    }}
-                  >
-                    <i className="bi bi-trash" />
-                  </span>
-                </div> */}
               </div>
             </NavItem>
           ))

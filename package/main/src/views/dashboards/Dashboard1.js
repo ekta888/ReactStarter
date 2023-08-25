@@ -1,10 +1,7 @@
 
-import React,{useState} from 'react';
-// import {  
-//   Card,
-//   CardBody,
-// } from 'reactstrap';
-
+import React,{useState,useEffect} from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   TabContent,
   TabPane,
@@ -25,7 +22,6 @@ import ContactcSearch from '../../components/custom/contactc/ContactcSearch';
 // import OnCallUser from '../../components/custom/OnCallUser';
   
 const Dashboard1 = () => {
-   console.log('Data----', Contactc);
   const [activeTab, setActiveTab] = useState('2');
   const [searchResults, setSearchResults] = useState([]);
   const [displayCallInfo,setDisplayCallInfo] = useState({});
@@ -36,13 +32,20 @@ const Dashboard1 = () => {
     setSearchResults(results);
   }
   const handleInfoFlagChange = (data) => {
-    console.log("newFlag",data)
     setDisplayCallInfo(data);
   };
-  console.log("displayCallInfo",displayCallInfo)
-  console.log("788888",searchResults);
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('loggedIn');
+    if (loggedIn === 'true') {
+      toast.success('Logged in successfully!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      localStorage.removeItem('loggedIn');
+    }
+  }, []);
   return (
     <>
+     <ToastContainer />
        <Nav tabs>
         <NavItem>
           <NavLink

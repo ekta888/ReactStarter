@@ -15,7 +15,15 @@ const SidebarData = [
     href: '/callback/callback',
     suffixColor: 'bg-white text-dark',
     icon: <Icon.PhoneForwarded />,
-    id: 1,
+    id: 1.2,
+    collapisble: false,
+  },
+  {
+    title: 'CDR Report',
+    href: '/cdr/cdr',
+    suffixColor: 'bg-white text-dark',
+    icon: <Icon.Calendar />,
+    id: 1.3,
     collapisble: false,
   },
   // {

@@ -18,7 +18,7 @@ import {
   InputGroup,
 } from 'reactstrap';
 //   import * as Icon from 'react-feather';
-import getCountryDrp from '../../../common/common';
+import {getCountryDrp} from  '../../../common/common';
 
 export default function ContactcAdd() {
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ export default function ContactcAdd() {
     // console.log(apiUrl);
     const config = {
       headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         'Content-Type': 'application/json'
       }
     };

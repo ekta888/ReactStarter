@@ -1,3 +1,22 @@
 .input-error {
     border: 1px solid red !important;
   }
+  .notes-list-item {
+    display: flex;
+    /* flex-direction: column; */
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .note-details {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .list-unstyled .list-item::before {
+    content: "•";
+    color: #ccc; /* Light color for the bullet */
+    margin-right: 0.5rem;
+  }

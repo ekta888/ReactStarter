@@ -14,6 +14,7 @@ const Dashboard4 = Loadable(lazy(() => import('../views/dashboards/Dashboard4'))
 const Dashboard5 = Loadable(lazy(() => import('../views/dashboards/Dashboard5')));
 const Dashboard6 = Loadable(lazy(() => import('../views/dashboards/Dashboard6')));
 const Callback = Loadable(lazy(() => import('../views/callback/Callback')));
+const Cdr = Loadable(lazy(() => import('../views/cdr/Cdr')));
 const About = Loadable(lazy(() => import('../views/About')));
 
 /***** Apps ****/
@@ -114,6 +115,7 @@ const ThemeRoutes = [
       { path: '/', name: 'Home', element: <Navigate to="/dashboards/dashboard1" /> },
       { path: '/dashboards/dashboard1', name: 'Analytical', exact: true, element: <Dashboard1 /> },
       { path: '/callback/callback', name: 'Analytical', exact: true, element: <Callback /> },
+      { path: '/cdr/cdr', name: 'Analytical', exact: true, element: <Cdr /> },
       {
         path: '/dashboards/dashboard2',
         name: 'Demographical',

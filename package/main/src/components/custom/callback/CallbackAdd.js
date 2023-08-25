@@ -17,7 +17,9 @@ import {
   Input,
   Button,
   InputGroup,
+  Spinner,
 } from 'reactstrap';
+import { formatDateAndTime } from '../../../common/common';
 
 export default function CallbackAdd(prop) {
   console.log("addprop",prop);
@@ -29,30 +31,33 @@ export default function CallbackAdd(prop) {
   const [comment,setComment] = useState();
   const [type,setType] = useState();
   const [dateTime,setDateTime] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const options = [
-    { value: 'callback', label: 'Callback' },
-    { value: 'email', label: 'Email' },
-    { value: 'whatsapp', label: 'WhatsApp' },
-    { value: 'escalation', label: 'Escalation' },
-    { value: 'othertask', label: 'Other Task' },
+    { value: 'Callback', label: 'Callback' },
+    { value: 'Email', label: 'Email' },
+    { value: 'Whatsapp', label: 'WhatsApp' },
+    { value: 'Escalation', label: 'Escalation' },
+    { value: 'Other', label: 'Other Task' },
   ];
   const onSubmit = (data) => {
+    setIsLoading(true);
     const apiUrl = `${process.env.REACT_APP_API_URL}/follow-up`;
     const config = {
       headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         'Content-Type': 'application/json'
       }
     };
+    const dateData = data.dateTime?formatDateAndTime(data.dateTime):formatDateAndTime(dateTime);
     const requestBody = { 
       'lead_management_uuid':prop.callbackAddData.lead_management_uuid,
       'type':data.type.value?data.type.value:type,
-      'date_time':data.dateTime?data.dateTime:dateTime,
+      'date_time': `${dateData.date} ${dateData.time}`,
       //'date_time':"2023-08-01 00:00:00",      
       'user_uuid':prop.callbackAddData.user_uuid,
       'comment' :data.comment?data.comment:comment
      };
-     
+     console.log("requestbbbb",requestBody)
     axios.post(apiUrl, requestBody, config)
       .then(response => {
         if(response.data.statusCode === 201){
@@ -143,6 +148,7 @@ export default function CallbackAdd(prop) {
                 </Row>
                 <CardBody className="border-top gap-2 d-flex justify-content-center">
                   <Button type="submit" className="btn btn-success mr-2">
+                  {isLoading ? <Spinner size="sm" color="success" className='mx-1 mt-1' /> : null}
                     Save Changes
                   </Button>
                   <Button type="button" className="btn btn-dark" onClick={handleCancel}>

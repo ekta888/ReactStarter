@@ -16,7 +16,7 @@ import {
   Button,
   InputGroup,
 } from 'reactstrap';
-import getCountryDrp from '../../../common/common';
+import {getCountryDrp} from '../../../common/common';
 //   import * as Icon from 'react-feather';
 
 export default function ContactcEdit(prop) {
@@ -88,7 +88,7 @@ export default function ContactcEdit(prop) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const apiUrl = `${process.env.REACT_APP_API_URL}/lead-management/cf16167e-cb4c-4be0-b14d-eaa3cbcdb00b`;
-    const accessToken = process.env.REACT_APP_AUTH_TOKEN;
+    const accessToken = localStorage.getItem('authToken');
 
     const config = {
       headers: {

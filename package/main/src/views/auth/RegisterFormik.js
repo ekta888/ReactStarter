@@ -21,6 +21,10 @@ const RegisterFormik = () => {
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string()
       .min(6, 'Password must be at least 6 characters')
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/])/,
+        'Password must contain at least one special character and one capital letter'
+      )
       .required('Password is required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')

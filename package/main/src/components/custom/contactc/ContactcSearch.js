@@ -13,7 +13,7 @@ const ContactcSearch = (prop) => {
         )}`,
         {
           headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`, // Add the token to the headers
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Add the token to the headers
           },
         }
       );
